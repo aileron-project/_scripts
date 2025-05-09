@@ -42,10 +42,10 @@ PROJECT STRUCTURE:
   │  ├─ coverage.html      |-- Default coverage output 
   │  ├─ coverage.txt       |-- Default coverage output 
   │  └─ coverage.func.txt  |-- Default coverage output 
-  ├─ scripts/              |-- Git submodule
-  │  └─ _makefiles/        |
+  ├─ _scripts/             |-- Git submodule
+  │  └─ makefiles/         |
   │     └─ go-test.mk      |
-  ├─ Makefile              |-- include scripts/_makefiles/go-test.mk
+  ├─ Makefile              |-- include _scripts/makefiles/go-test.mk
   ├─ go.mod                |
   └─ go.sum                |
 endef

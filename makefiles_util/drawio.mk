@@ -29,11 +29,11 @@ IDE INTEGRATIONS:
   - Others?   : https://www.drawio.com/integrations
 
 PROJECT STRUCTURE:
-  /                       |-- Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles_util/  |
-  │     └─ drawio.mk      |
-  └─ Makefile             |-- include scripts/_makefiles_util/drawio.mk
+  /                      |-- Project
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles_util/  |
+  │     └─ drawio.mk     |
+  └─ Makefile            |-- include _scripts/makefiles_util/drawio.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: drawio-help

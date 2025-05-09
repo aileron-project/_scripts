@@ -38,14 +38,14 @@ IDE INTEGRATIONS:
   - Others?   : https://docs.asciidoctor.org/asciidoctor/latest/tooling/
 
 PROJECT STRUCTURE:
-  /                  |-- Project
-  ├─ docs/           |-- Git submodule
-  │  └─ adoc/        |
-  │     └─ *.adoc    |-- default target to compile
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
-  │     └─ adoc.mk   |
-  └─ Makefile        |-- include scripts/_makefiles/adoc.mk
+  /                 |-- Project
+  ├─ docs/          |-- Git submodule
+  │  └─ adoc/       |
+  │     └─ *.adoc   |-- default target to compile
+  ├─ _scripts/      |-- Git submodule
+  │  └─ makefiles/  |
+  │     └─ adoc.mk  |
+  └─ Makefile       |-- include _scripts/makefiles/adoc.mk
 endef
 ################################################################################
 

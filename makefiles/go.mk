@@ -32,13 +32,13 @@ IDE INTEGRATIONS:
   - Others?   : https://go.dev/wiki/IDEsAndTextEditorPlugins
 
 PROJECT STRUCTURE:
-  /                  |-- Go project
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
-  │     └─ go.mk     |
-  ├─ Makefile        |-- include scripts/_makefiles/go.mk
-  ├─ go.mod          |
-  └─ go.sum          |
+  /                 |-- Go project
+  ├─ _scripts/      |-- Git submodule
+  │  └─ makefiles/  |
+  │     └─ go.mk    |
+  ├─ Makefile       |-- include _scripts/makefiles/go.mk
+  ├─ go.mod         |
+  └─ go.sum         |
 endef
 #------------------------------------------------------------------------------#
 .PHONY: go-help

@@ -28,11 +28,11 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                       |-- Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles/       |
+  ├─ _scripts/            |-- Git submodule
+  │  └─ makefiles/        |
   │     └─ shellcheck.mk  |
   ├─ .shellcheckrc        |-- Config file
-  └─ Makefile             |-- include scripts/_makefiles/shellcheck.mk
+  └─ Makefile             |-- include _scripts/makefiles/shellcheck.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: shellcheck-help

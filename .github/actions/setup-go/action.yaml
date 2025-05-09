@@ -1,31 +1,40 @@
 name: Setup Go
 description: ""
+
 inputs:
+  # ---------------------------------------------------------
+  # For setup-go. DO NOT EDIT.
+  skip-setup-go:
+    description: "skip actions/setup-go"
+    required: false
+    default: "false"
   go-version:
-    description: "go-version for setup-go job"
+    description: "go-version for actions/setup-go"
     required: false
     default: "stable"
   go-version-file:
-    description: "go-version-file for setup-go job"
+    description: "go-version-file for actions/setup-go"
     required: false
     default: ""
   check-latest:
-    description: "check-latest for setup-go job"
+    description: "check-latest for actions/setup-go"
     required: false
     default: "true"
   cache:
-    description: "cache for setup-go job"
+    description: "cache for actions/setup-go"
     required: false
     default: "false"
   cache-dependency-path:
-    description: "cache-dependency-path for setup-go job"
+    description: "cache-dependency-path for actions/setup-go"
     required: false
     default: ""
+  # ---------------------------------------------------------
 
 runs:
   using: "composite"
   steps:
     - uses: actions/setup-go@v5
+      if: ${{ inputs.skip-setup-go != 'true' }}
       with:
         go-version: ${{ inputs.go-version }}
         go-version-file: ${{ inputs.go-version-file }}

@@ -35,10 +35,10 @@ PROJECT STRUCTURE:
   /                  |-- Project
   ├─ _output/        |
   │  └─ sbom.json    |-- Default sbom output file 
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
+  ├─ _scripts/       |-- Git submodule
+  │  └─ makefiles/   |
   │     └─ trivy.mk  |
-  └─ Makefile        |-- include scripts/_makefiles/trivy.mk
+  └─ Makefile        |-- include _scripts/makefiles/trivy.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: trivy-help

@@ -31,11 +31,11 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                      |-- Project
-  ├─ scripts/            |-- Git submodule
-  │  └─ _makefiles/      |
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles/       |
   │     └─ protolint.mk  |
   ├─ .protolint.yaml     |-- Config file
-  └─ Makefile            |-- include scripts/_makefiles/protolint.mk
+  └─ Makefile            |-- include _scripts/makefiles/protolint.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: protolint-help

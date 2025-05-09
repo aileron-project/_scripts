@@ -34,10 +34,10 @@ PROJECT STRUCTURE:
   /                        |-- Go Project
   ├─ _output/              |
   │  └─ go-licenses.csv    |-- Default licenses output 
-  ├─ scripts/              |-- Git submodule
-  │  └─ _makefiles/        |
+  ├─ _scripts/             |-- Git submodule
+  │  └─ makefiles/         |
   │     └─ go-licenses.mk  |
-  ├─ Makefile              |-- include scripts/_makefiles/go-licenses.mk
+  ├─ Makefile              |-- include _scripts/makefiles/go-licenses.mk
   ├─ go.mod                |
   └─ go.sum                |
 endef

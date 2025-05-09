@@ -34,16 +34,16 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                  |-- Project
-  ├─ _output/        |
-  │  └─ pkg/*        |-- Default package output path 
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
-  │     └─ nfpm.mk   |
-  ├─ Makefile        |-- include scripts/_makefiles/nfpm.mk
-  ├─ nfpm.yaml       |-- Config file
-  ├─ go.mod          |
-  └─ go.sum          |
+  /                 |-- Project
+  ├─ _output/       |
+  │  └─ pkg/*       |-- Default package output path 
+  ├─ _scripts/      |-- Git submodule
+  │  └─ makefiles/  |
+  │     └─ nfpm.mk  |
+  ├─ Makefile       |-- include _scripts/makefiles/nfpm.mk
+  ├─ nfpm.yaml      |-- Config file
+  ├─ go.mod         |
+  └─ go.sum         |
 endef
 #------------------------------------------------------------------------------#
 .PHONY: nfpm-help

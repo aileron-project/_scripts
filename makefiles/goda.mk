@@ -39,10 +39,10 @@ PROJECT STRUCTURE:
   │  ├─ dependency-graph.svg  |-- Default dependency graph output file
   │  ├─ dependency-graph.png  |-- Default dependency graph output file
   │  └─ dependency-graph.jpg  |-- Default dependency graph output file
-  ├─ scripts/                 |-- Git submodule
-  │  └─ _makefiles/           |
+  ├─ _scripts/                |-- Git submodule
+  │  └─ makefiles/            |
   │     └─ goda.mk            |
-  ├─ Makefile                 |-- include scripts/_makefiles/goda.mk
+  ├─ Makefile                 |-- include _scripts/makefiles/goda.mk
   ├─ go.mod                   |
   └─ go.sum                   |
 endef

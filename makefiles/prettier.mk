@@ -31,11 +31,11 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                     |-- Project
-  ├─ scripts/           |-- Git submodule
-  │  └─ _makefiles/     |
+  ├─ _scripts/          |-- Git submodule
+  │  └─ makefiles/      |
   │     └─ prettier.mk  |
   ├─ .prettierrc.yaml   |-- Config file
-  └─ Makefile           |-- include scripts/_makefiles/prettier.mk
+  └─ Makefile           |-- include _scripts/makefiles/prettier.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: prettier-help

@@ -35,13 +35,13 @@ PROJECT STRUCTURE:
   /                     |-- Go project
   ├─ _output/           |
   │  └─ bin/            |-- Default binary output path 
-  ├─ scripts/           |-- Git submodule
-  │  └─ _makefiles/     |
+  ├─ _scripts/          |-- Git submodule
+  │  └─ makefiles/      |
   │     └─ go-build.mk  |
   ├─ cmd/               |-- Default lookup directory
   │  ├─ foo/            |
   │  └─ bar/            |
-  ├─ Makefile           |-- include scripts/_makefiles/go-build.mk
+  ├─ Makefile           |-- include _scripts/makefiles/go-build.mk
   ├─ go.mod             |
   └─ go.sum             |
 endef

@@ -33,14 +33,14 @@ IDE INTEGRATIONS:
   - Others?   : https://buf.build/docs/cli/editor-integration/
 
 PROJECT STRUCTURE:
-  /                  |-- Project
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
-  │     └─ buf.mk    |
-  ├─ Makefile        |-- include scripts/_makefiles/buf.mk
-  ├─ buf.yaml        |-- Config file
-  ├─ buf.gen.yaml    |-- Config file
-  └─ buf.lock        |-- Auto generated file managed by buf
+  /                 |-- Project
+  ├─ _scripts/      |-- Git submodule
+  │  └─ makefiles/  |
+  │     └─ buf.mk   |
+  ├─ Makefile       |-- include _scripts/makefiles/buf.mk
+  ├─ buf.yaml       |-- Config file
+  ├─ buf.gen.yaml   |-- Config file
+  └─ buf.lock       |-- Auto generated file managed by buf
 endef
 #------------------------------------------------------------------------------#
 .PHONY: buf-help

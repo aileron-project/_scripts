@@ -32,10 +32,10 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                  |-- Project
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
+  ├─ _scripts/       |-- Git submodule
+  │  └─ makefiles/   |
   │     └─ shfmt.mk  |
-  └─ Makefile        |-- include scripts/_makefiles/shfmt.mk
+  └─ Makefile        |-- include _scripts/makefiles/shfmt.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: shfmt-help

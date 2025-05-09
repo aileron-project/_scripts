@@ -5,7 +5,7 @@ lint:
     exclude: []
   directories:
     exclude:
-      - scripts/
+      - _scripts/
   rules:
     no_default: true
     add:

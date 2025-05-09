@@ -30,12 +30,12 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                      |-- Project
-  ├─ scripts/            |-- Git submodule
-  │  └─ _makefiles/      |
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles/       |
   │     └─ cspell.mk     |
   ├─ .cspell.yaml        |-- Config file
   ├─ .project-words.txt  |-- Allowed words list (must be configured)
-  └─ Makefile            |-- include scripts/_makefiles/cspell.mk
+  └─ Makefile            |-- include _scripts/makefiles/cspell.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: cspell-help

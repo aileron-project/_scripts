@@ -30,10 +30,10 @@ PROJECT STRUCTURE:
   /                    |-- Project
   ├─ _output/          |
   │  └─ scanoss.json   |-- Default scan result file 
-  ├─ scripts/          |-- Git submodule
-  │  └─ _makefiles/    |
+  ├─ _scripts/         |-- Git submodule
+  │  └─ makefiles/     |
   │     └─ scanoss.mk  |
-  └─ Makefile          |-- include scripts/_makefiles/scanoss.mk
+  └─ Makefile          |-- include _scripts/makefiles/scanoss.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: scanoss-help

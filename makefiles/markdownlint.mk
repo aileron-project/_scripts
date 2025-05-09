@@ -28,11 +28,11 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                         |-- Project
-  ├─ scripts/               |-- Git submodule
-  │  └─ _makefiles/         |
+  ├─ _scripts/              |-- Git submodule
+  │  └─ makefiles/          |
   │     └─ markdownlint.mk  |
   ├─ .markdownlint.yaml     |-- Config file
-  └─ Makefile               |-- include scripts/_makefiles/markdownlint.mk
+  └─ Makefile               |-- include _scripts/makefiles/markdownlint.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: markdownlint-help

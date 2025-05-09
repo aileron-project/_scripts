@@ -31,11 +31,11 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                          |-- Go Project
-  ├─ scripts/                |-- Git submodule
-  │  └─ _makefiles/          |
+  ├─ _scripts/               |-- Git submodule
+  │  └─ makefiles/           |
   │     └─ golangci-lint.mk  |
   ├─ .golangci.yaml          |-- Config file
-  ├─ Makefile                |-- include scripts/_makefiles/golangci-lint.mk
+  ├─ Makefile                |-- include _scripts/makefiles/golangci-lint.mk
   ├─ go.mod                  |
   └─ go.sum                  |
 endef

@@ -30,11 +30,11 @@ IDE INTEGRATIONS:
   - Others?   : https://docs.mermaidchart.com/plugins/intro
 
 PROJECT STRUCTURE:
-  /                       |-- Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles_util/  |
-  │     └─ mermaid.mk     |
-  └─ Makefile             |-- include scripts/_makefiles_util/mermaid.mk
+  /                      |-- Project
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles_util/  |
+  │     └─ mermaid.mk    |
+  └─ Makefile            |-- include _scripts/makefiles_util/mermaid.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: mermaid-help

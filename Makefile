@@ -8,31 +8,30 @@ ifneq (,$(wildcard .env))
   include .env
 endif
 
-include _makefiles/adoc.mk
-include _makefiles/buf.mk
-include _makefiles/cspell.mk
-include _makefiles/go-build.mk
-include _makefiles/go-licenses.mk
-include _makefiles/go-test.mk
-include _makefiles/go.mk
-include _makefiles/goda.mk
-include _makefiles/golangci-lint.mk
-include _makefiles/govulncheck.mk
-include _makefiles/markdownlint.mk
-include _makefiles/nfpm.mk
-include _makefiles/prettier.mk
-include _makefiles/protolint.mk
-include _makefiles/scanoss.mk
-include _makefiles/shellcheck.mk
-include _makefiles/shfmt.mk
-include _makefiles/trivy.mk
-include _makefiles/util.mk
-include _makefiles_util/drawio.mk
-include _makefiles_util/diagrams.mk
-include _makefiles_util/graphviz.mk
-include _makefiles_util/mermaid.mk
-include _makefiles_util/pkgsite.mk
-
+include makefiles/adoc.mk
+include makefiles/buf.mk
+include makefiles/cspell.mk
+include makefiles/go-build.mk
+include makefiles/go-licenses.mk
+include makefiles/go-test.mk
+include makefiles/go.mk
+include makefiles/goda.mk
+include makefiles/golangci-lint.mk
+include makefiles/govulncheck.mk
+include makefiles/markdownlint.mk
+include makefiles/nfpm.mk
+include makefiles/prettier.mk
+include makefiles/protolint.mk
+include makefiles/scanoss.mk
+include makefiles/shellcheck.mk
+include makefiles/shfmt.mk
+include makefiles/trivy.mk
+include makefiles/util.mk
+include makefiles_util/drawio.mk
+include makefiles_util/diagrams.mk
+include makefiles_util/graphviz.mk
+include makefiles_util/mermaid.mk
+include makefiles_util/pkgsite.mk
 
 LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run

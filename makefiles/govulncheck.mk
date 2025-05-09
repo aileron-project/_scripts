@@ -28,10 +28,10 @@ IDE INTEGRATIONS:
 
 PROJECT STRUCTURE:
   /                        |-- Go Project
-  ├─ scripts/              |-- Git submodule
-  │  └─ _makefiles/        |
+  ├─ _scripts/             |-- Git submodule
+  │  └─ makefiles/         |
   │     └─ govulncheck.mk  |
-  ├─ Makefile              |-- include scripts/_makefiles/govulncheck.mk
+  ├─ Makefile              |-- include _scripts/makefiles/govulncheck.mk
   ├─ go.mod                |
   └─ go.sum                |
 endef

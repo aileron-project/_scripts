@@ -20,11 +20,11 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                       |-- Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles_util/  |
-  │     └─ diagrams.mk    |
-  └─ Makefile             |-- include scripts/_makefiles_util/diagrams.mk
+  /                      |-- Project
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles_util/  |
+  │     └─ diagrams.mk   |
+  └─ Makefile            |-- include _scripts/makefiles_util/diagrams.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: diagrams-help

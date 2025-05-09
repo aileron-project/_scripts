@@ -33,11 +33,11 @@ IDE INTEGRATIONS:
   - Others?   : https://graphviz.org/resources/
 
 PROJECT STRUCTURE:
-  /                       |-- Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles_util/  |
-  │     └─ graphviz.mk    |
-  └─ Makefile             |-- include scripts/_makefiles_util/graphviz.mk
+  /                      |-- Project
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles_util/  |
+  │     └─ graphviz.mk   |
+  └─ Makefile            |-- include _scripts/makefiles_util/graphviz.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: graphviz-help

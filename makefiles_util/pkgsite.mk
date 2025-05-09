@@ -26,13 +26,13 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                       |-- Go Project
-  ├─ scripts/             |-- Git submodule
-  │  └─ _makefiles_util/  |
-  │     └─ pkgsite.mk     |
-  ├─ Makefile             |-- include scripts/_makefiles/pkgsite.mk
-  ├─ go.mod               |
-  └─ go.sum               |
+  /                      |-- Go Project
+  ├─ _scripts/           |-- Git submodule
+  │  └─ makefiles_util/  |
+  │     └─ pkgsite.mk    |
+  ├─ Makefile            |-- include _scripts/makefiles/pkgsite.mk
+  ├─ go.mod              |
+  └─ go.sum              |
 endef
 #------------------------------------------------------------------------------#
 .PHONY: pkgsite-help

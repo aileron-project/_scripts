@@ -21,11 +21,11 @@ IDE INTEGRATIONS:
   - none
 
 PROJECT STRUCTURE:
-  /                  |-- Project
-  ├─ scripts/        |-- Git submodule
-  │  └─ _makefiles/  |
-  │     └─ util.mk   |
-  └─ Makefile        |-- include scripts/_makefiles/util.mk
+  /                 |-- Project
+  ├─ _scripts/      |-- Git submodule
+  │  └─ makefiles/  |
+  │     └─ util.mk  |
+  └─ Makefile       |-- include _scripts/makefiles/util.mk
 endef
 #------------------------------------------------------------------------------#
 .PHONY: util-help
