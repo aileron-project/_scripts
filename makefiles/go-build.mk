@@ -79,10 +79,10 @@ GO_BUILD_TAGS ?= netgo,osusergo
 GO_BUILD_LDFLAGS ?= -w -s -extldflags '-static'
 GO_BUILD_GCFLAGS ?=
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 GO_BUILD_CMD := $(GO_CMD) build $(GO_BUILD_FLAGS)
 GO_BUILD_CMD += -tags="$(GO_BUILD_TAGS)"
 GO_BUILD_CMD += -ldflags="$(GO_BUILD_LDFLAGS)"
@@ -111,4 +111,3 @@ go-build:
 	echo "INFO: Building $$target"; \
 	$(GO_BUILD_CMD) $(ARGS) $$target; \
 	done
-#______________________________________________________________________________#

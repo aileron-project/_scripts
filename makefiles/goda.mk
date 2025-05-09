@@ -63,10 +63,10 @@ GODA_OPTION ?=
 DOT_CMD ?= dot
 DOT_OPTION ?=
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: goda-install-usage
 goda-install-usage:
 	# Usage : make goda-install ARGS=""
@@ -88,12 +88,11 @@ ifeq (,$(shell which $(GODA_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: goda-usage
 goda-usage:
 	# Usage : make goda ARGS=""
@@ -105,12 +104,11 @@ goda-usage:
 .PHONY: goda
 goda: goda-install
 	$(GODA_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: goda-run-usage
 goda-run-usage:
 	# Usage : make goda-run ARGS=""
@@ -132,4 +130,3 @@ goda-run: goda-install
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tsvg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).svg
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tpng $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).png -Gdpi=250
 	cat $(basename $(GODA_OUTPUT)).dot | $(DOT_CMD) -Tjpg $(DOT_OPTION) -o $(basename $(GODA_OUTPUT)).jpg -Gdpi=250
-#______________________________________________________________________________#

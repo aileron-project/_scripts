@@ -54,13 +54,13 @@ GO_LICENSES_CMD ?= $(GOBIN)go-licenses
 GO_LICENSES_VERSION ?= latest
 GO_LICENSES_TARGET ?= ./...
 GO_LICENSES_OUTPUT ?= _output/go-licenses.csv
-GO_LICENSES_OPTION_CHECK ?= --allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause
+GO_LICENSES_OPTION_CHECK ?= --allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause.ISC
 GO_LICENSES_OPTION_REPORT ?= 
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: go-licenses-install-usage
 go-licenses-install-usage:
 	# Usage : make go-licenses-install ARGS=""
@@ -82,12 +82,11 @@ ifeq (,$(shell which $(GO_LICENSES_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: go-licenses-usage
 go-licenses-usage:
 	# Usage : make go-licenses ARGS=""
@@ -101,12 +100,11 @@ go-licenses-usage:
 .PHONY: go-licenses
 go-licenses: go-licenses-install
 	$(GO_LICENSES_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: go-licenses-run-usage
 go-licenses-run-usage:
 	# Usage : make go-licenses-run ARGS=""
@@ -125,4 +123,3 @@ go-licenses-run: go-licenses-install
 	@echo ================================================================================
 	@cat $(GO_LICENSES_OUTPUT)
 	@echo ================================================================================
-#______________________________________________________________________________#

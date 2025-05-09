@@ -46,17 +46,16 @@ golangci-lint-help:
 	@echo ""
 ################################################################################
 
-
 GO_CMD ?= go
 GOLANGCI_LINT_CMD ?= $(GOBIN)golangci-lint
 GOLANGCI_LINT_VERSION ?= latest
 GOLANGCI_LINT_TARGET ?= ./...
 GOLANGCI_LINT_OPTION ?= 
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: golangci-lint-install-usage
 golangci-lint-install-usage:
 	# Usage : make golangci-lint-install ARGS=""
@@ -78,12 +77,11 @@ ifeq (,$(shell which $(GOLANGCI_LINT_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: golangci-lint-usage
 golangci-lint-usage:
 	# Usage : make golangci-lint ARGS=""
@@ -96,12 +94,11 @@ golangci-lint-usage:
 .PHONY: golangci-lint
 golangci-lint: golangci-lint-install
 	$(GOLANGCI_LINT_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: golangci-lint-run-usage
 golangci-lint-run-usage:
 	# Usage : make golangci-lint-run ARGS=""
@@ -114,4 +111,3 @@ golangci-lint-run-usage:
 .PHONY: golangci-lint-run
 golangci-lint-run: golangci-lint-install
 	$(GOLANGCI_LINT_CMD) run $(ARGS) $(GOLANGCI_LINT_OPTION) $(GOLANGCI_LINT_TARGET)
-#______________________________________________________________________________#

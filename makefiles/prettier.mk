@@ -44,16 +44,15 @@ prettier-help:
 	@echo ""
 ################################################################################
 
-
 PRETTIER_CMD ?= prettier
 PRETTIER_VERSION ?= latest
 PRETTIER_TARGET ?= "**/*.{md,yaml,yml,json,xml,toml,js,jsx,ts,html,css}"
 PRETTIER_OPTION ?= --check
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: prettier-install-usage
 prettier-install-usage:
 	# Usage : make prettier-install ARGS=""
@@ -72,12 +71,11 @@ ifeq (,$(shell which $(PRETTIER_CMD) 2>/dev/null))
 	npm install -g "prettier@$(PRETTIER_VERSION)"
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: prettier-usage
 prettier-usage:
 	# Usage : make prettier ARGS=""
@@ -90,12 +88,11 @@ prettier-usage:
 .PHONY: prettier
 prettier: prettier-install
 	$(PRETTIER_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: prettier-run-usage
 prettier-run-usage:
 	# Usage : make prettier-run ARGS=""
@@ -108,4 +105,3 @@ prettier-run-usage:
 .PHONY: prettier-run
 prettier-run: prettier-install
 	$(PRETTIER_CMD) $(ARGS) $(PRETTIER_OPTION) $(PRETTIER_TARGET)
-#______________________________________________________________________________#

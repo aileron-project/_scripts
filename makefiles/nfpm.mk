@@ -63,10 +63,10 @@ NFPM_DEB_ARCH ?= 386 amd64 arm arm5 arm6 arm7 arm64 ppc64le riscv64 s390x
 NFPM_APK_ARCH ?= 386 amd64 arm arm5 arm6 arm7 arm64 ppc64le riscv64 s390x
 NFPM_ARCH_ARCH ?= amd64 arm arm5 arm6 arm7 arm64 riscv64
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: nfpm-install-usage
 nfpm-install-usage:
 	# Usage : make nfpm-install ARGS=""
@@ -88,12 +88,11 @@ ifeq (,$(shell which $(NFPM_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: nfpm-usage
 nfpm-usage:
 	# Usage : make nfpm ARGS=""
@@ -106,18 +105,16 @@ nfpm-usage:
 .PHONY: nfpm
 nfpm: nfpm-install
 	$(NFPM_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
-#                                                                              #
 .PHONY: nfpm-rpm-usage
 nfpm-rpm-usage:
-	# Usage : make nfpm-rpm ARGS=""
-	# Exec  : nfpm package -p rpm -t $(NFPM_OUTPUT) $(NFPM_OPTION)
-	# Desc  : Generate .rpm packages.
+	# Usage : make nfpm-rpm
+	# Exec  : $$(NFPM_CMD) package -p rpm -t $$(NFPM_OUTPUT) $$(NFPM_OPTION)
+	# Desc  : Create rpm packages.
 	# Examples:
 	#   - make nfpm-rpm NFPM_RPM_ARCH="amd64"
 	#   - make nfpm-rpm NFPM_RPM_ARCH="amd64 arm64"
@@ -126,60 +123,65 @@ nfpm-rpm-usage:
 nfpm-rpm: nfpm-install
 	mkdir -p $(NFPM_OUTPUT)
 	@for target in $(NFPM_RPM_ARCH); do \
-	ARCH=$$target nfpm package -p rpm -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
+	ARCH=$$target $(NFPM_CMD) package -p rpm -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#  Usage: `make nfpm-deb`                                                      #
-#  Description: Create deb packages.                                           #
-#  Examples:                                                                   #
-#    make nfpm-deb NFPM_DEB_ARCH="amd64"                                       #
-#    make nfpm-deb NFPM_DEB_ARCH="amd64 arm64"                                 #
-#                                                                              #
-#                                                                              #
+.PHONY: nfpm-deb-usage
+nfpm-deb-usage:
+	# Usage : make nfpm-deb
+	# Exec  : $$(NFPM_CMD) package -p deb -t $$(NFPM_OUTPUT) $$(NFPM_OPTION)
+	# Desc  : Create deb packages.
+	# Examples:
+	#   - make nfpm-deb NFPM_DEB_ARCH="amd64"
+	#   - make nfpm-deb NFPM_DEB_ARCH="amd64 arm64"
+
 .PHONY: nfpm-deb
 nfpm-deb: nfpm-install
 	mkdir -p $(NFPM_OUTPUT)
 	@for target in $(NFPM_DEB_ARCH); do \
-	ARCH=$$target nfpm package -p deb -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
+	ARCH=$$target $(NFPM_CMD) package -p deb -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#  Usage: `make nfpm-apk`                                                      #
-#  Description: Create apk packages.                                           #
-#  Examples:                                                                   #
-#    make nfpm-apk NFPM_APK_ARCH="amd64"                                       #
-#    make nfpm-apk NFPM_APK_ARCH="amd64 arm64"                                 #
-#                                                                              #
-#                                                                              #
+.PHONY: nfpm-apk-usage
+nfpm-apk-usage:
+	# Usage : make nfpm-apk
+	# Exec  : $$(NFPM_CMD) package -p apk -t $$(NFPM_OUTPUT) $$(NFPM_OPTION)
+	# Desc  : Create apk packages.
+	# Examples:
+	#   - make nfpm-apk NFPM_APK_ARCH="amd64"
+	#   - make nfpm-apk NFPM_APK_ARCH="amd64 arm64"
+
 .PHONY: nfpm-apk
 nfpm-apk: nfpm-install
 	mkdir -p $(NFPM_OUTPUT)
 	@for target in $(NFPM_APK_ARCH); do \
-	ARCH=$$target nfpm package -p apk -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
+	ARCH=$$target $(NFPM_CMD) package -p apk -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#  Usage: `make nfpm-arch`                                                     #
-#  Description: Create archlinux packages.                                     #
-#  Examples:                                                                   #
-#    make nfpm-arch NFPM_ARCH_ARCH="amd64"                                     #
-#    make nfpm-arch NFPM_ARCH_ARCH="amd64 arm64"                               #
-#                                                                              #
-#                                                                              #
+.PHONY: nfpm-arch-usage
+nfpm-arch-usage:
+	# Usage : make nfpm-arch
+	# Exec  : $$(NFPM_CMD) package -p archlinux -t $$(NFPM_OUTPUT) $$(NFPM_OPTION)
+	# Desc  : Create archlinux packages.
+	# Examples:
+	#   - make nfpm-arch NFPM_ARCH_ARCH="amd64"
+	#   - make nfpm-arch NFPM_ARCH_ARCH="amd64 arm64"
+
 .PHONY: nfpm-arch
 nfpm-arch: nfpm-install
 	mkdir -p $(NFPM_OUTPUT)
 	@for target in $(NFPM_ARCH_ARCH); do \
-	ARCH=$$target nfpm package -p archlinux -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
+	ARCH=$$target $(NFPM_CMD) package -p archlinux -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
-#______________________________________________________________________________#

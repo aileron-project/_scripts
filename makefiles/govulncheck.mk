@@ -49,10 +49,10 @@ GOVULNCHECK_VERSION ?= latest
 GOVULNCHECK_TARGET ?= ./...
 GOVULNCHECK_OPTION ?= 
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: govulncheck-install-usage
 govulncheck-install-usage:
 	# Usage : make govulncheck-install ARGS=""
@@ -74,12 +74,11 @@ ifeq (,$(shell which $(GOVULNCHECK_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: govulncheck-usage
 govulncheck-usage:
 	# Usage : make govulncheck ARGS=""
@@ -92,12 +91,11 @@ govulncheck-usage:
 .PHONY: govulncheck
 govulncheck: govulncheck-install
 	$(GOVULNCHECK_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: govulncheck-run-usage
 govulncheck-run-usage:
 	# Usage : make govulncheck-run ARGS=""
@@ -110,4 +108,3 @@ govulncheck-run-usage:
 .PHONY: govulncheck-run
 govulncheck-run: govulncheck-install
 	$(GOVULNCHECK_CMD) $(ARGS) $(GOVULNCHECK_OPTION) $(GOVULNCHECK_TARGET)
-#______________________________________________________________________________#

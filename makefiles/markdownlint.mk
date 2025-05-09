@@ -41,16 +41,15 @@ markdownlint-help:
 	@echo ""
 ################################################################################
 
-
 MARKDOWNLINT_CMD ?= markdownlint
 MARKDOWNLINT_VERSION ?= latest
 MARKDOWNLINT_TARGET ?= ./
 MARKDOWNLINT_OPTION ?=
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: markdownlint-install-usage
 markdownlint-install-usage:
 	# Usage : make markdownlint-install ARGS=""
@@ -72,12 +71,11 @@ ifeq (,$(shell which $(MARKDOWNLINT_CMD) 2>/dev/null))
 	npm install -g "markdownlint-cli@$(MARKDOWNLINT_VERSION)"
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: markdownlint-usage
 markdownlint-usage:
 	# Usage : make markdownlint ARGS=""
@@ -90,12 +88,11 @@ markdownlint-usage:
 .PHONY: markdownlint
 markdownlint: markdownlint-install
 	$(MARKDOWNLINT_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: markdownlint-run-usage
 markdownlint-run-usage:
 	# Usage : make markdownlint-run ARGS=""
@@ -108,4 +105,3 @@ markdownlint-run-usage:
 .PHONY: markdownlint-run
 markdownlint-run: markdownlint-install
 	$(MARKDOWNLINT_CMD) $(ARGS) $(MARKDOWNLINT_OPTION) $(MARKDOWNLINT_TARGET)
-#______________________________________________________________________________#

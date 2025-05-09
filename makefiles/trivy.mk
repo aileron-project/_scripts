@@ -56,10 +56,10 @@ TRIVY_SBOM_OPTION ?= --license-full
 TRIVY_SBOM_FORMAT ?= cyclonedx
 TRIVY_SBOM_OUTPUT ?= _output/sbom.json
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: trivy-install-usage
 trivy-install-usage:
 	# Usage : make trivy-install ARGS=""
@@ -81,12 +81,11 @@ ifeq (,$(shell which $(TRIVY_CMD) 2>/dev/null))
 	$(GO_CMD) mod tidy
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: trivy-usage
 trivy-usage:
 	# Usage : make trivy ARGS=""
@@ -100,12 +99,11 @@ trivy-usage:
 .PHONY: trivy
 trivy: trivy-install
 	$(TRIVY_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: trivy-sbom-usage
 trivy-sbom-usage:
 	# Usage : make trivy-sbom ARGS=""
@@ -121,4 +119,3 @@ trivy-sbom: trivy-install
 	@mkdir -p $(dir $(TRIVY_SBOM_OUTPUT))
 	$(TRIVY_CMD) filesystem -f $(TRIVY_SBOM_FORMAT) -o $(TRIVY_SBOM_OUTPUT) \
 	$(ARGS) $(TRIVY_SBOM_OPTION) $(TRIVY_SBOM_TARGET)
-#______________________________________________________________________________#

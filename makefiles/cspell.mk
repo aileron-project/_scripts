@@ -50,10 +50,10 @@ CSPELL_VERSION ?= latest
 CSPELL_TARGET ?= ./
 CSPELL_OPTION ?= --quiet --words-only --unique
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: cspell-install-usage
 cspell-install-usage:
 	# Usage : make cspell-install ARGS=""
@@ -73,12 +73,11 @@ ifeq (,$(shell which $(CSPELL_CMD) 2>/dev/null))
 	npm install -g "cspell@$(CSPELL_VERSION)"
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: cspell-usage
 cspell-usage:
 	# Usage : make cspell ARGS=""
@@ -91,12 +90,11 @@ cspell-usage:
 .PHONY: cspell
 cspell: cspell-install
 	$(CSPELL_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: cspell-run-usage
 cspell-run-usage:
 	# Usage : make cspell-run ARGS=""
@@ -109,4 +107,3 @@ cspell-run-usage:
 .PHONY: cspell-run
 cspell-run: cspell-install
 	$(CSPELL_CMD) lint $(ARGS) $(CSPELL_OPTION) $(CSPELL_TARGET)
-#______________________________________________________________________________#

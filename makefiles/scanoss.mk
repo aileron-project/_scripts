@@ -49,10 +49,10 @@ SCANOSS_OUTPUT ?= _output/scanoss.json
 SCANOSS_OPTION_SCAN ?= --no-wfp-output
 SCANOSS_OPTION_INSPECT ?= copyleft 
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: scanoss-install-usage
 scanoss-install-usage:
 	# Usage : make scanoss-install ARGS=""
@@ -73,12 +73,11 @@ ifeq (,$(shell which $(SCANOSS_CMD) 2>/dev/null))
   # pip install scancode-toolkit
 endif
 endif
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: scanoss-usage
 scanoss-usage:
 	# Usage : make scanoss ARGS=""
@@ -91,12 +90,11 @@ scanoss-usage:
 .PHONY: scanoss
 scanoss: scanoss-install
 	$(SCANOSS_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: scanoss-run-usage
 scanoss-run-usage:
 	# Usage : make scanoss-run ARGS=""
@@ -117,4 +115,3 @@ scanoss-run: scanoss-install
 	else \
 	rm -f scanoss.tmp; exit 1; \
 	fi
-#______________________________________________________________________________#

@@ -46,10 +46,10 @@ SHELLCHECK_CMD ?= shellcheck
 SHELLCHECK_TARGET ?= $(shell find . -type f -name '*.sh' 2>/dev/null)
 SHELLCHECK_OPTION ?=
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: shellcheck-usage
 shellcheck-usage:
 	# Usage : make shellcheck ARGS=""
@@ -62,12 +62,11 @@ shellcheck-usage:
 .PHONY: shellcheck
 shellcheck:
 	$(SHELLCHECK_CMD) $(ARGS)
-#______________________________________________________________________________#
 
+#|                                                                             |
+#├─────────────────────────────────────────────────────────────────────────────┤
+#|                                                                             |
 
-##### ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ #####
-##                                                                            ##
-#                                                                              #
 .PHONY: shellcheck-run-usage
 shellcheck-run-usage:
 	# Usage : make shellcheck-run ARGS=""
@@ -80,4 +79,3 @@ shellcheck-run-usage:
 .PHONY: shellcheck-run
 shellcheck-run:
 	$(SHELLCHECK_CMD) $(ARGS) $(SHELLCHECK_OPTION) $(SHELLCHECK_TARGET)
-#______________________________________________________________________________#
