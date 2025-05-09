@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	log.Println("Server listening on port 8080")
+	log.Println("Server listening on localhost:8080")
 	server := http.Server{
 		Addr:              ":8080",
 		ReadHeaderTimeout: 60 * time.Second,
@@ -15,7 +15,7 @@ func main() {
 			_, _ = w.Write([]byte("Hello World!!"))
 		}),
 	}
-	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+	if err := server.ListenAndServe(); err != nil {
 		panic(err)
 	}
 }

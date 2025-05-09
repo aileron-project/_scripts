@@ -2,14 +2,13 @@ package foofoo
 
 import "os"
 
-// Multiply returns x * y.
-func Multiply(x, y int) int {
-	_, _ = readFile("testdata/test.txt")
-	return x * y
+// Sub returns x - y.
+func Sub(x, y int) int {
+	return x - y
 }
 
-// readFile returns the content of given file.
-func readFile(path string) (string, error) {
+// ReadFile returns the content of given file.
+func ReadFile(path string) (string, error) {
 	b, err := os.ReadFile(path)
 	if err != nil {
 		return "", err

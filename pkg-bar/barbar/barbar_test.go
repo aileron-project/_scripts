@@ -4,16 +4,16 @@ import (
 	"testing"
 )
 
-func TestMultiply(t *testing.T) {
+func TestSub(t *testing.T) {
 	t.Parallel()
-	if Multiply(2, 3) != 6 {
+	if Sub(1, 2) != -1 {
 		t.Error("fail")
 	}
 }
 
 func TestReadFile(t *testing.T) {
 	t.Parallel()
-	s, err := readFile("testdata/data.txt")
+	s, err := ReadFile("testdata/data.txt")
 	if err != nil {
 		t.Error(err)
 	}

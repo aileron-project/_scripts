@@ -1,28 +1,19 @@
-package bar_test
+package bar
 
 import (
 	"testing"
-
-	bar "github.com/aileron-project/_scripts/pkg-bar"
 )
 
 func TestAdd(t *testing.T) {
 	t.Parallel()
-	if bar.Add(1, 2) != 3 {
-		t.Error("fail")
-	}
-}
-
-func TestSub(t *testing.T) {
-	t.Parallel()
-	if bar.Sub(1, 2) != -1 {
+	if Add(1, 2) != 3 {
 		t.Error("fail")
 	}
 }
 
 func TestReadFile(t *testing.T) {
 	t.Parallel()
-	s, err := bar.ReadFile("testdata/data.txt")
+	s, err := ReadFile("testdata/data.txt")
 	if err != nil {
 		t.Error(err)
 	}

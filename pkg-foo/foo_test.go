@@ -1,28 +1,19 @@
-package foo_test
+package foo
 
 import (
 	"testing"
-
-	foo "github.com/aileron-project/_scripts/pkg-foo"
 )
 
 func TestAdd(t *testing.T) {
 	t.Parallel()
-	if foo.Add(1, 2) != 3 {
-		t.Error("fail")
-	}
-}
-
-func TestSub(t *testing.T) {
-	t.Parallel()
-	if foo.Sub(1, 2) != -1 {
+	if Add(1, 2) != 3 {
 		t.Error("fail")
 	}
 }
 
 func TestReadFile(t *testing.T) {
 	t.Parallel()
-	s, err := foo.ReadFile("testdata/data.txt")
+	s, err := ReadFile("testdata/data.txt")
 	if err != nil {
 		t.Error(err)
 	}
