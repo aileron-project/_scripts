@@ -1,4 +1,4 @@
-module github.com/aileron-project/scripts
+module github.com/aileron-project/_scripts
 
 go 1.23.0
 

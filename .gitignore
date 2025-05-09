@@ -4,8 +4,8 @@
 
 # Project
 apis/
-_bin/
-_output/
+_bin/**
+_output/**
 /*.env.mk
 /*.env
 *.test
