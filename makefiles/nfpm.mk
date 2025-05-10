@@ -70,7 +70,7 @@ NFPM_ARCH_ARCH ?= amd64 arm arm5 arm6 arm7 arm64 riscv64
 .PHONY: nfpm-install-usage
 nfpm-install-usage:
 	# Usage : make nfpm-install ARGS=""
-	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/goreleaser/nfpm/cmd/nfpm@$$(NFPM_VERSION)"
+	# Exec  : $$(GO_CMD) install $$(ARGS) "github.com/goreleaser/nfpm/v2/cmd/nfpm@$$(NFPM_VERSION)"
 	# Desc  : Install nfpm using `go install`.
 	# Examples:
 	#   - make nfpm-install
@@ -80,11 +80,11 @@ nfpm-install-usage:
 .PHONY: nfpm-install
 nfpm-install:
 ifeq ("nfpm-install","$(MAKECMDGOALS)")
-	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/cmd/nfpm@$(NFPM_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/v2/cmd/nfpm@$(NFPM_VERSION)"
 	$(GO_CMD) mod tidy
 else
 ifeq (,$(shell which $(NFPM_CMD) 2>/dev/null))
-	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/cmd/nfpm@$(NFPM_VERSION)"
+	$(GO_CMD) install $(ARGS) "github.com/goreleaser/nfpm/v2/cmd/nfpm@$(NFPM_VERSION)"
 	$(GO_CMD) mod tidy
 endif
 endif
