@@ -12,7 +12,7 @@ TARGETS:
   - golangci-lint-run     : run lint.
 
 VARIABLES [default value]:
-  - GO_CMD                : go command used in protolint-install. [go]
+  - GO_CMD                : go command used in golangci-lint-install. [go]
   - GOLANGCI_LINT_CMD     : golangci-lint command. [$$(GOBIN)golangci-lint]
   - GOLANGCI_LINT_VERSION : golangci-lint version to install. [latest]
   - GOLANGCI_LINT_TARGET  : lint target. [./...]
