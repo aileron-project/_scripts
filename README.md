@@ -12,19 +12,22 @@ Basic structure that uses this repository as a git submodule becomes
 /                   |-- Project root
 ├─ _scripts/        |-- Git submodule (This repository)
 │  └─ makefiles/    |
+├─ makefiles/       |-- Projects' makefiles
 ├─ docs/            |-- Documentation
 ├─ cmd/             |-- Go commands
 ├─ go.mod           |
 ├─ go.sum           |
-└─ Makefile         |-- include _scripts/makefiles/*.mk
+└─ Makefile         |-- Include necessary *.mk
 ```
+
+[./Makefile](./Makefile) is an example of project's makefile.
 
 ## Makefiles
 
 Reusable makefiles are placed in [./makefiles/](./makefiles/).
 Currently following tools available.
 
-| Makefile                                         | Show help message         | Description                      |
+| Makefile                                         | Help commands             | Description                      |
 | ------------------------------------------------ | ------------------------- | :------------------------------- |
 | [adoc.mk](./makefiles/adoc.mk)                   | `make adoc-help`          | Export documents from `*.adoc`   |
 | [cspell.mk](./makefiles/cspell.mk)               | `make cspell-help`        | Run spell check with cspell      |
@@ -53,7 +56,7 @@ Reusable actions in [./.github/actions/](./.github/actions/).
 
 Reusable actions in [./.github/workflows/](./.github/workflows/).
 
-## Make tips
+## Make command tips
 
 Following make options can be helpful when debugging make.
 
