@@ -1,5 +1,5 @@
 SHELL ?= /bin/bash -euo pipefail
-define SHFMP_HELP
+define SHFMT_HELP
 REQUIREMENTS:
   - shfmt : `shfmt` command must be available.
   - go    : `go` command must be available for `shfmt-install`.
@@ -39,7 +39,7 @@ endef
 
 .PHONY: shfmt-help
 shfmt-help:
-	$(info $(SHFMP_HELP))
+	$(info $(SHFMT_HELP))
 	@echo ""
 
 #├─────────────────────────────────────────────────────────────────────────────┤
