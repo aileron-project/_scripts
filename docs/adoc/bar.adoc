@@ -1,5 +1,4 @@
 
 = My book
 
-
-include::./bar/basic.adoc[]
+include::./bar/bar.adoc[]

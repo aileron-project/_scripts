@@ -233,8 +233,6 @@ I4 [shape=ellipse,color=red,style=bold,label="Janet Norton Lee\nb. 2.10.1877\nd.
 }
 ....
 
-
-
 == Equations in normal blocks
 
 [latexmath]
