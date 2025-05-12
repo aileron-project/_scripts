@@ -28,10 +28,8 @@ include makefiles/shfmt.mk
 include makefiles/trivy.mk
 include makefiles/util.mk
 include makefiles_util/drawio.mk
-include makefiles_util/diagrams.mk
 include makefiles_util/graphviz.mk
 include makefiles_util/mermaid.mk
-include makefiles_util/pkgsite.mk
 
 LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run
