@@ -1,7 +1,7 @@
 ---
-title: Syntax
-linkTitle: Syntax
-identifier: Syntax
+title: Foo
+linkTitle: Foo
+identifier: Foo
 type: docs
 categories: ["${PRJ}", "${TAG}"]
 tags: ["${PRJ}", "${TAG}"]
