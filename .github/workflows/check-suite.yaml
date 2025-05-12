@@ -1,4 +1,4 @@
-name: Check Suite Go
+name: Check Suite
 
 on:
   workflow_dispatch: {}

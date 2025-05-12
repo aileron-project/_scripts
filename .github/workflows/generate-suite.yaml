@@ -1,4 +1,4 @@
-name: Generate Suite Go
+name: Generate Suite
 
 on:
   workflow_dispatch: {}
