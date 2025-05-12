@@ -1,5 +1,5 @@
-$(shell mkdir -p _bin/)
-export GOBIN := $(CURDIR)/_bin/
+$(shell mkdir -p bin/)
+export GOBIN := $(CURDIR)/bin/
 
 ifneq (,$(wildcard .env.mk))
   include .env.mk

@@ -10,5 +10,4 @@ ignorePaths:
   - ".vscode/"
   - ".git/"
   - ".project-words.txt"
-  - "_bin/"
   - "_output/"

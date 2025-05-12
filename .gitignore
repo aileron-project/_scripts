@@ -3,11 +3,11 @@
 .idea/
 
 # Project
-apis/
-_bin/**
 _output/**
-/*.env.mk
-/*.env
+apis/
+bin/**
+*.env.mk
+*.env
 *.test
 *.out
 *.o
@@ -27,9 +27,6 @@ _output/**
 /docs/adoc/**/*.jpeg
 /docs/adoc/**/*.png
 /docs/adoc/**/*.svg
-
-# Diagrams
-__pycache__
 
 # For convenience
 tmp/
