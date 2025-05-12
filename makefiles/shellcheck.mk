@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define shellcheck.mk
+SHELL ?= /bin/bash -euo pipefail
+define SHELLCHECK_HELP
 REQUIREMENTS:
   - shellcheck : `shellcheck` command must be available.
 
@@ -34,21 +33,19 @@ PROJECT STRUCTURE:
   ├─ .shellcheckrc        |-- Config file
   └─ Makefile             |-- include _scripts/makefiles/shellcheck.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: shellcheck-help
 shellcheck-help:
-	$(info $(shellcheck.mk))
+	$(info $(SHELLCHECK_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 SHELLCHECK_CMD ?= shellcheck
 SHELLCHECK_TARGET ?= $(shell find . -type f -name '*.sh' 2>/dev/null)
 SHELLCHECK_OPTION ?=
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shellcheck-usage
 shellcheck-usage:
@@ -63,9 +60,7 @@ shellcheck-usage:
 shellcheck:
 	$(SHELLCHECK_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shellcheck-run-usage
 shellcheck-run-usage:
@@ -78,4 +73,6 @@ shellcheck-run-usage:
 
 .PHONY: shellcheck-run
 shellcheck-run:
+ifneq (,$(SHELLCHECK_TARGET))
 	$(SHELLCHECK_CMD) $(ARGS) $(SHELLCHECK_OPTION) $(SHELLCHECK_TARGET)
+endif

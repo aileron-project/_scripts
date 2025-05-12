@@ -1,6 +1,6 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define go-licenses.mk
+SHELL ?= /bin/bash -euo pipefail
+
+define GO_LICENSES_HELP
 REQUIREMENTS:
   - go-licenses : `go-licenses` command must be available.
   - go          : `go` command must be available for `go-licenses-install`.
@@ -41,13 +41,13 @@ PROJECT STRUCTURE:
   ├─ go.mod                |
   └─ go.sum                |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: go-licenses-help
 go-licenses-help:
-	$(info $(go-licenses.mk))
+	$(info $(GO_LICENSES_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GO_LICENSES_CMD ?= $(GOBIN)go-licenses
@@ -57,9 +57,7 @@ GO_LICENSES_OUTPUT ?= _output/go-licenses.csv
 GO_LICENSES_OPTION_CHECK ?= --allowed_licenses=MIT,Apache-2.0,BSD-2-Clause,BSD-3-Clause,BSD-4-Clause.ISC
 GO_LICENSES_OPTION_REPORT ?= 
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-licenses-install-usage
 go-licenses-install-usage:
@@ -83,9 +81,7 @@ ifeq (,$(shell which $(GO_LICENSES_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-licenses-usage
 go-licenses-usage:
@@ -101,9 +97,7 @@ go-licenses-usage:
 go-licenses: go-licenses-install
 	$(GO_LICENSES_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-licenses-run-usage
 go-licenses-run-usage:

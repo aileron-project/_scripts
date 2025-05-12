@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define govulncheck.mk
+SHELL ?= /bin/bash -euo pipefail
+define GOVULNCHECK_HELP
 REQUIREMENTS:
   - govulncheck : `govulncheck` command must be available.
   - go          : `go` command must be available for `govulncheck-install`.
@@ -35,13 +34,13 @@ PROJECT STRUCTURE:
   ├─ go.mod                |
   └─ go.sum                |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: govulncheck-help
 govulncheck-help:
-	$(info $(govulncheck.mk))
+	$(info $(GOVULNCHECK_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GOVULNCHECK_CMD ?= $(GOBIN)govulncheck
@@ -49,9 +48,7 @@ GOVULNCHECK_VERSION ?= latest
 GOVULNCHECK_TARGET ?= ./...
 GOVULNCHECK_OPTION ?= 
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: govulncheck-install-usage
 govulncheck-install-usage:
@@ -75,9 +72,7 @@ ifeq (,$(shell which $(GOVULNCHECK_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: govulncheck-usage
 govulncheck-usage:
@@ -92,9 +87,7 @@ govulncheck-usage:
 govulncheck: govulncheck-install
 	$(GOVULNCHECK_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: govulncheck-run-usage
 govulncheck-run-usage:

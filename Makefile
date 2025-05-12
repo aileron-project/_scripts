@@ -11,6 +11,7 @@ endif
 include makefiles/adoc.mk
 include makefiles/buf.mk
 include makefiles/cspell.mk
+include makefiles/drawio.mk
 include makefiles/go-build.mk
 include makefiles/go-licenses.mk
 include makefiles/go-test.mk
@@ -18,7 +19,9 @@ include makefiles/go.mk
 include makefiles/goda.mk
 include makefiles/golangci-lint.mk
 include makefiles/govulncheck.mk
+include makefiles/graphviz.mk
 include makefiles/markdownlint.mk
+include makefiles/mermaid.mk
 include makefiles/nfpm.mk
 include makefiles/prettier.mk
 include makefiles/protolint.mk
@@ -27,9 +30,6 @@ include makefiles/shellcheck.mk
 include makefiles/shfmt.mk
 include makefiles/trivy.mk
 include makefiles/util.mk
-include makefiles_util/drawio.mk
-include makefiles_util/graphviz.mk
-include makefiles_util/mermaid.mk
 
 LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run

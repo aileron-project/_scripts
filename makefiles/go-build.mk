@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define go-build.mk
+SHELL ?= /bin/bash -euo pipefail
+define GO_BUILD_HELP
 REQUIREMENTS:
   - go : `go` command must be available.
 
@@ -45,13 +44,13 @@ PROJECT STRUCTURE:
   ├─ go.mod             |
   └─ go.sum             |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: go-build-help
 go-build-help:
-	$(info $(go-build.mk))
+	$(info $(GO_BUILD_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 
@@ -79,9 +78,7 @@ GO_BUILD_TAGS ?= netgo,osusergo
 GO_BUILD_LDFLAGS ?= -w -s -extldflags '-static'
 GO_BUILD_GCFLAGS ?=
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 GO_BUILD_CMD := $(GO_CMD) build $(GO_BUILD_FLAGS)
 GO_BUILD_CMD += -tags="$(GO_BUILD_TAGS)"

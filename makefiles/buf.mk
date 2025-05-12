@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define buf.mk
+SHELL ?= /bin/bash -euo pipefail
+define BUF_HELP
 REQUIREMENTS:
   - buf : `buf` command must be available.
   - go  : `go` command must be available for `buf-install`.
@@ -42,12 +41,13 @@ PROJECT STRUCTURE:
   ├─ buf.gen.yaml   |-- Config file
   └─ buf.lock       |-- Auto generated file managed by buf
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: buf-help
 buf-help:
-	$(info $(buf.mk))
+	$(info $(BUF_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 BUF_CMD ?= $(GOBIN)buf
@@ -56,9 +56,7 @@ BUF_LINT_OPTION ?=
 BUF_FORMAT_OPTION ?= --exit-code --diff
 BUF_GENERATE_OPTION ?= --include-imports
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: buf-install-usage
 buf-install-usage:
@@ -82,9 +80,7 @@ ifeq (,$(shell which $(BUF_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: buf-usage
 buf-usage:
@@ -99,9 +95,7 @@ buf-usage:
 buf: buf-install
 	$(BUF_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: buf-lint-usage
 buf-lint-usage:
@@ -116,9 +110,7 @@ buf-lint-usage:
 buf-lint: buf-install
 	$(BUF_CMD) lint $(ARGS) $(BUF_LINT_OPTION)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: buf-format-usage
 buf-format-usage:
@@ -133,9 +125,7 @@ buf-format-usage:
 buf-format: buf-install
 	$(BUF_CMD) format $(ARGS) $(BUF_FORMAT_OPTION)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: buf-generate-usage
 buf-generate-usage:

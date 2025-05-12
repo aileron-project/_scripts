@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define golangci-lint.mk
+SHELL ?= /bin/bash -euo pipefail
+define GOLANGCI_LINT_HELP
 REQUIREMENTS:
   - golangci-lint : `golangci-lint` command must be available.
   - go            : `go` command must be available for `golangci-lint-install`.
@@ -39,12 +38,13 @@ PROJECT STRUCTURE:
   ├─ go.mod                  |
   └─ go.sum                  |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: golangci-lint-help
 golangci-lint-help:
-	$(info $(golangci-lint.mk))
+	$(info $(GOLANGCI_LINT_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GOLANGCI_LINT_CMD ?= $(GOBIN)golangci-lint
@@ -52,9 +52,7 @@ GOLANGCI_LINT_VERSION ?= latest
 GOLANGCI_LINT_TARGET ?= ./...
 GOLANGCI_LINT_OPTION ?= 
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: golangci-lint-install-usage
 golangci-lint-install-usage:
@@ -78,9 +76,7 @@ ifeq (,$(shell which $(GOLANGCI_LINT_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: golangci-lint-usage
 golangci-lint-usage:
@@ -95,9 +91,7 @@ golangci-lint-usage:
 golangci-lint: golangci-lint-install
 	$(GOLANGCI_LINT_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: golangci-lint-run-usage
 golangci-lint-run-usage:

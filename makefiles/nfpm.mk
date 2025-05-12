@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define nfpm.mk
+SHELL ?= /bin/bash -euo pipefail
+define NFPM_HELP
 REQUIREMENTS:
   - nfpm : `nfpm` command must be available.
   - go    : `go` command must be available for `nfpm-install`.
@@ -45,13 +44,13 @@ PROJECT STRUCTURE:
   ├─ go.mod         |
   └─ go.sum         |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: nfpm-help
 nfpm-help:
-	$(info $(nfpm.mk))
+	$(info $(NFPM_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 NFPM_CMD ?= $(GOBIN)nfpm
@@ -63,9 +62,7 @@ NFPM_DEB_ARCH ?= 386 amd64 arm arm5 arm6 arm7 arm64 ppc64le riscv64 s390x
 NFPM_APK_ARCH ?= 386 amd64 arm arm5 arm6 arm7 arm64 ppc64le riscv64 s390x
 NFPM_ARCH_ARCH ?= amd64 arm arm5 arm6 arm7 arm64 riscv64
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-install-usage
 nfpm-install-usage:
@@ -89,9 +86,7 @@ ifeq (,$(shell which $(NFPM_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-usage
 nfpm-usage:
@@ -106,9 +101,7 @@ nfpm-usage:
 nfpm: nfpm-install
 	$(NFPM_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-rpm-usage
 nfpm-rpm-usage:
@@ -126,9 +119,7 @@ nfpm-rpm: nfpm-install
 	ARCH=$$target $(NFPM_CMD) package -p rpm -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-deb-usage
 nfpm-deb-usage:
@@ -146,9 +137,7 @@ nfpm-deb: nfpm-install
 	ARCH=$$target $(NFPM_CMD) package -p deb -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-apk-usage
 nfpm-apk-usage:
@@ -166,9 +155,7 @@ nfpm-apk: nfpm-install
 	ARCH=$$target $(NFPM_CMD) package -p apk -t $(NFPM_OUTPUT) $(NFPM_OPTION); \
 	done
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: nfpm-arch-usage
 nfpm-arch-usage:

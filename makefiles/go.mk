@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define go.mk
+SHELL ?= /bin/bash -euo pipefail
+define GO_HELP
 REQUIREMENTS:
   - go : `go` command must be available.
 
@@ -40,13 +39,13 @@ PROJECT STRUCTURE:
   ├─ go.mod         |
   └─ go.sum         |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: go-help
 go-help:
-	$(info $(go.mk))
+	$(info $(GO_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GOFMT_CMD ?= gofmt
@@ -57,9 +56,7 @@ GO_VET_OPTION ?=
 GO_FMT_TARGET ?= ./
 GO_FMT_OPTION ?= -l -e -s
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-usage
 go-usage:
@@ -74,9 +71,7 @@ go-usage:
 go:
 	$(GO_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-vet-usage
 go-vet-usage:
@@ -92,9 +87,7 @@ go-vet-usage:
 go-vet:
 	$(GO_CMD) vet $(ARGS) $(GO_VET_OPTION) $(GO_VET_TARGET)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-fmt-usage
 go-fmt-usage:

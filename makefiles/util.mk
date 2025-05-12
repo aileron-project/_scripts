@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define util.mk
+SHELL ?= /bin/bash -euo pipefail
+define UTIL_HELP
 REQUIREMENTS:
   - none
 
@@ -27,25 +26,21 @@ PROJECT STRUCTURE:
   │     └─ util.mk  |
   └─ Makefile       |-- include _scripts/makefiles/util.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: util-help
 util-help:
-	$(info $(util.mk))
+	$(info $(UTIL_HELP))
 	@echo ""
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
-.PHONY: list-makefiles
-list-makefiles:
+.PHONY: list list-makefiles
+list list-makefiles:
 	@for target in $(MAKEFILE_LIST); do \
 	echo "$$target"; \
 	done
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: help helps list-helps
 help helps list-helps:

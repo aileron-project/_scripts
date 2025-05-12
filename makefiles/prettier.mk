@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define prettier.mk
+SHELL ?= /bin/bash -euo pipefail
+define PRETTIER_HELP
 REQUIREMENTS:
   - prettier : `prettier` command must be available.
   - npm      : `npm` command must be available for `prettier-install`.
@@ -37,21 +36,20 @@ PROJECT STRUCTURE:
   ├─ .prettierrc.yaml   |-- Config file
   └─ Makefile           |-- include _scripts/makefiles/prettier.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: prettier-help
 prettier-help:
-	$(info $(prettier.mk))
+	$(info $(PRETTIER_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 PRETTIER_CMD ?= prettier
 PRETTIER_VERSION ?= latest
 PRETTIER_TARGET ?= "**/*.{md,yaml,yml,json,xml,toml,js,jsx,ts,html,css}"
 PRETTIER_OPTION ?= --check
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: prettier-install-usage
 prettier-install-usage:
@@ -72,9 +70,7 @@ ifeq (,$(shell which $(PRETTIER_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: prettier-usage
 prettier-usage:
@@ -89,9 +85,7 @@ prettier-usage:
 prettier: prettier-install
 	$(PRETTIER_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: prettier-run-usage
 prettier-run-usage:

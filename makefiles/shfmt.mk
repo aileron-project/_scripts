@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define shfmt.mk
+SHELL ?= /bin/bash -euo pipefail
+define SHFMP_HELP
 REQUIREMENTS:
   - shfmt : `shfmt` command must be available.
   - go    : `go` command must be available for `shfmt-install`.
@@ -37,13 +36,13 @@ PROJECT STRUCTURE:
   │     └─ shfmt.mk  |
   └─ Makefile        |-- include _scripts/makefiles/shfmt.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: shfmt-help
 shfmt-help:
-	$(info $(shfmt.mk))
+	$(info $(SHFMP_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 SHFMT_CMD ?= $(GOBIN)shfmt
@@ -51,9 +50,7 @@ SHFMT_VERSION ?= latest
 SHFMT_TARGET ?= ./
 SHFMT_OPTION ?= --diff
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shfmt-install-usage
 shfmt-install-usage:
@@ -77,9 +74,7 @@ ifeq (,$(shell which $(SHFMT_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shfmt-usage
 shfmt-usage:
@@ -94,9 +89,7 @@ shfmt-usage:
 shfmt: shfmt-install
 	$(SHFMT_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shfmt-run-usage
 shfmt-run-usage:
@@ -112,9 +105,7 @@ shfmt-run-usage:
 shfmt-run: shfmt-install
 	$(SHFMT_CMD) $(ARGS) $(SHFMT_OPTION) $(SHFMT_TARGET)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: shfmt-local-usage
 shfmt-local-usage:

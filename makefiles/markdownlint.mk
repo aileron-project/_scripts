@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define markdownlint.mk
+SHELL ?= /bin/bash -euo pipefail
+define MARKDOWNLINT_HELP
 REQUIREMENTS:
   - markdownlint : `markdownlint` command must be available.
   - npm          : `npm` command must be available for `markdownlint-install`.
@@ -34,21 +33,20 @@ PROJECT STRUCTURE:
   ├─ .markdownlint.yaml     |-- Config file
   └─ Makefile               |-- include _scripts/makefiles/markdownlint.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: markdownlint-help
 markdownlint-help:
-	$(info $(markdownlint.mk))
+	$(info $(MARKDOWNLINT_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 MARKDOWNLINT_CMD ?= markdownlint
 MARKDOWNLINT_VERSION ?= latest
 MARKDOWNLINT_TARGET ?= ./
 MARKDOWNLINT_OPTION ?=
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: markdownlint-install-usage
 markdownlint-install-usage:
@@ -72,9 +70,7 @@ ifeq (,$(shell which $(MARKDOWNLINT_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: markdownlint-usage
 markdownlint-usage:
@@ -89,9 +85,7 @@ markdownlint-usage:
 markdownlint: markdownlint-install
 	$(MARKDOWNLINT_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: markdownlint-run-usage
 markdownlint-run-usage:

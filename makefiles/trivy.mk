@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define trivy.mk
+SHELL ?= /bin/bash -euo pipefail
+define TRIVY_HELP
 REQUIREMENTS:
   - trivy : `trivy` command must be available.
   - go    : `go` command must be available for `trivy-install`.
@@ -40,13 +39,13 @@ PROJECT STRUCTURE:
   │     └─ trivy.mk  |
   └─ Makefile        |-- include _scripts/makefiles/trivy.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: trivy-help
 trivy-help:
-	$(info $(trivy.mk))
+	$(info $(TRIVY_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 TRIVY_CMD ?= $(GOBIN)trivy
@@ -56,9 +55,7 @@ TRIVY_SBOM_OPTION ?= --license-full
 TRIVY_SBOM_FORMAT ?= cyclonedx
 TRIVY_SBOM_OUTPUT ?= _output/sbom.json
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: trivy-install-usage
 trivy-install-usage:
@@ -82,9 +79,7 @@ ifeq (,$(shell which $(TRIVY_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: trivy-usage
 trivy-usage:
@@ -100,9 +95,7 @@ trivy-usage:
 trivy: trivy-install
 	$(TRIVY_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: trivy-sbom-usage
 trivy-sbom-usage:

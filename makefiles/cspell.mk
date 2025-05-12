@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define cspell.mk
+SHELL ?= /bin/bash -euo pipefail
+define CSPELL_HELP
 REQUIREMENTS:
   - cspell : `cspell` command must be available.
   - npm    : `npm` command must be available for `cspell-install`.
@@ -37,22 +36,20 @@ PROJECT STRUCTURE:
   ├─ .project-words.txt  |-- Allowed words list (must be configured)
   └─ Makefile            |-- include _scripts/makefiles/cspell.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: cspell-help
 cspell-help:
-	$(info $(cspell.mk))
+	$(info $(CSPELL_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 CSPELL_CMD ?= cspell
 CSPELL_VERSION ?= latest
 CSPELL_TARGET ?= ./
 CSPELL_OPTION ?= --quiet --words-only --unique
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: cspell-install-usage
 cspell-install-usage:
@@ -74,9 +71,7 @@ ifeq (,$(shell which $(CSPELL_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: cspell-usage
 cspell-usage:
@@ -91,9 +86,7 @@ cspell-usage:
 cspell: cspell-install
 	$(CSPELL_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: cspell-run-usage
 cspell-run-usage:

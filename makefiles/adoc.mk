@@ -1,16 +1,16 @@
-################################################################################
-define asciidoc.mk
+SHELL ?= /bin/bash -euo pipefail
+define ADOC_HELP
 REQUIREMENTS:
   - asciidoctor       : `asciidoctor` command must be available for `make asciidoc-html`.
   - asciidoctor-pdf   : `asciidoctor-pdf` command must be available for `make asciidoc-pdf`.
   - asciidoctor-epub3 : `asciidoctor-epub3` command must be available for `make asciidoc-epub`.
 
 TARGETS:
-  - asciidoc-help : show help message.
-  - asciidoc      : run asciidoctor command with given args.
-  - asciidoc-html : export adoc as html.
-  - asciidoc-pdf  : export adoc as pdf.
-  - asciidoc-epub : export adoc as epub.
+  - adoc-help : show help message.
+  - adoc      : run asciidoctor command with given args.
+  - adoc-html : export adoc as html.
+  - adoc-pdf  : export adoc as pdf.
+  - adoc-epub : export adoc as epub.
 
 VARIABLES [default value]:
   - ADOC_CMD          : asciidoctor binary path. [asciidoctor]
@@ -47,8 +47,13 @@ PROJECT STRUCTURE:
   │     └─ adoc.mk  |
   └─ Makefile       |-- include _scripts/makefiles/adoc.mk
 endef
-################################################################################
 
+.PHONY: adoc-help
+adoc-help:
+	$(info $(ADOC_HELP))
+	@echo ""
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 ADOC_CMD ?= asciidoctor
 ADOC_CMD_PDF ?= asciidoctor-pdf
@@ -90,13 +95,19 @@ ADOC_REQS_PDF := $(addprefix --require=,$(ADOC_REQS_COMMON) $(ADOC_REQS_PDF))
 ADOC_ATTRS_EPUB := $(addprefix --attribute=,$(ADOC_ATTRS_COMMON) $(ADOC_ATTRS_EPUB))
 ADOC_REQS_EPUB := $(addprefix --require=,$(ADOC_REQS_COMMON) $(ADOC_REQS_EPUB))
 
+#├─────────────────────────────────────────────────────────────────────────────┤
+
 .PHONY: adoc-html
 adoc-html:
 	$(ADOC_CMD) $(ADOC_OPTION) $(ADOC_ATTRS_HTML) $(ADOC_REQS_HTML) $(ARGS) $(ADOC_TARGET)
 
+#├─────────────────────────────────────────────────────────────────────────────┤
+
 .PHONY: adoc-pdf
 adoc-pdf:
 	$(ADOC_CMD_PDF) $(ADOC_OPTION) $(ADOC_ATTRS_PDF) $(ADOC_REQS_PDF) $(ARGS) $(ADOC_TARGET)
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 .PHONY: adoc-epub
 adoc-epub:

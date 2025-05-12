@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define go-test.mk
+SHELL ?= /bin/bash -euo pipefail
+define GO_TEST_HELP
 REQUIREMENTS:
   - go              : `go` command must be available.
   - qemu            : QEMU User space emulator must be available for `go-test-qemu` target.
@@ -49,12 +48,13 @@ PROJECT STRUCTURE:
   ├─ go.mod                |
   └─ go.sum                |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: go-test-help
 go-test-help:
-	$(info $(go-test.mk))
+	$(info $(GO_TEST_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GO_JUNIT_CMD ?=$(GOBIN)go-junit-report
@@ -98,9 +98,7 @@ qemu_cmd_riscv64 := qemu-riscv64
 qemu_cmd_s390x := qemu-s390x
 qemu_cmd_sparc64 := qemu-sparc64
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-test-install-usage
 go-test-install-usage:
@@ -124,9 +122,7 @@ ifeq (,$(shell which $(GO_JUNIT_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 GO_TEST_CMD := $(GO_CMD) test $(GO_TEST_FLAGS)
 GO_TEST_CMD += -tags="$(GO_TEST_TAGS)"
@@ -162,9 +158,7 @@ ifneq ($(GO_TEST_COVERAGE),)
 endif
 	@rm -f go-test.tmp
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: go-test-qemu-usage
 go-test-qemu-usage:

@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define goda.mk
+SHELL ?= /bin/bash -euo pipefail
+define GODA_HELP
 REQUIREMENTS:
   - dot  : `dot` command (graphviz) must be available.
   - goda : `goda` command must be available.
@@ -46,13 +45,13 @@ PROJECT STRUCTURE:
   ├─ go.mod                   |
   └─ go.sum                   |
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: goda-help
 goda-help:
-	$(info $(goda.mk))
+	$(info $(GODA_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 GODA_CMD ?= $(GOBIN)goda
@@ -63,9 +62,7 @@ GODA_OPTION ?=
 DOT_CMD ?= dot
 DOT_OPTION ?=
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: goda-install-usage
 goda-install-usage:
@@ -89,9 +86,7 @@ ifeq (,$(shell which $(GODA_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: goda-usage
 goda-usage:
@@ -105,9 +100,7 @@ goda-usage:
 goda: goda-install
 	$(GODA_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: goda-run-usage
 goda-run-usage:

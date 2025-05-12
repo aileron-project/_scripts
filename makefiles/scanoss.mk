@@ -1,6 +1,5 @@
-SHELL := /bin/bash
-################################################################################
-define scanoss.mk
+SHELL ?= /bin/bash
+define SCANOSS_HELP
 REQUIREMENTS:
   - scanoss-py : `scanoss-py` command must be available.
   - pip        : `pip` command must be available for `scanoss-install`.
@@ -35,13 +34,13 @@ PROJECT STRUCTURE:
   │     └─ scanoss.mk  |
   └─ Makefile          |-- include _scripts/makefiles/scanoss.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: scanoss-help
 scanoss-help:
-	$(info $(scanoss.mk))
+	$(info $(SCANOSS_HELP))
 	@echo ""
-################################################################################
 
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 SCANOSS_CMD ?= scanoss-py
 SCANOSS_TARGET ?= ./
@@ -49,9 +48,7 @@ SCANOSS_OUTPUT ?= _output/scanoss.json
 SCANOSS_OPTION_SCAN ?= --no-wfp-output
 SCANOSS_OPTION_INSPECT ?= copyleft 
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: scanoss-install-usage
 scanoss-install-usage:
@@ -74,9 +71,7 @@ ifeq (,$(shell which $(SCANOSS_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: scanoss-usage
 scanoss-usage:
@@ -91,9 +86,7 @@ scanoss-usage:
 scanoss: scanoss-install
 	$(SCANOSS_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: scanoss-run-usage
 scanoss-run-usage:

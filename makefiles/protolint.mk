@@ -1,6 +1,5 @@
-SHELL := /bin/bash -euo pipefail
-################################################################################
-define protolint.mk
+SHELL ?= /bin/bash -euo pipefail
+define PROTOLINT_HELP
 REQUIREMENTS:
   - protolint : `protolint` command must be available.
   - go        : `go` command must be available for `protolint-install`.
@@ -37,12 +36,13 @@ PROJECT STRUCTURE:
   ├─ .protolint.yaml     |-- Config file
   └─ Makefile            |-- include _scripts/makefiles/protolint.mk
 endef
-#------------------------------------------------------------------------------#
+
 .PHONY: protolint-help
 protolint-help:
-	$(info $(protolint.mk))
+	$(info $(PROTOLINT_HELP))
 	@echo ""
-################################################################################
+
+#├─────────────────────────────────────────────────────────────────────────────┤
 
 GO_CMD ?= go
 PROTOLINT_CMD ?= $(GOBIN)protolint
@@ -50,9 +50,7 @@ PROTOLINT_VERSION ?= latest
 PROTOLINT_TARGET ?= ./
 PROTOLINT_OPTION ?=
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: protolint-install-usage
 protolint-install-usage:
@@ -76,9 +74,7 @@ ifeq (,$(shell which $(PROTOLINT_CMD) 2>/dev/null))
 endif
 endif
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: protolint-usage
 protolint-usage:
@@ -92,9 +88,7 @@ protolint-usage:
 protolint: protolint-install
 	$(PROTOLINT_CMD) $(ARGS)
 
-#|                                                                             |
 #├─────────────────────────────────────────────────────────────────────────────┤
-#|                                                                             |
 
 .PHONY: protolint-run-usage
 protolint-run-usage:
