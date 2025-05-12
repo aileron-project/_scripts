@@ -1,24 +1,25 @@
 SHELL ?= /bin/bash -euo pipefail
 define ADOC_HELP
 REQUIREMENTS:
-  - asciidoctor       : `asciidoctor` command must be available for `make asciidoc-html`.
-  - asciidoctor-pdf   : `asciidoctor-pdf` command must be available for `make asciidoc-pdf`.
-  - asciidoctor-epub3 : `asciidoctor-epub3` command must be available for `make asciidoc-epub`.
+  - asciidoctor       : `asciidoctor` required for the `asciidoc-html` target.
+  - asciidoctor-pdf   : `asciidoctor-pdf` required for the `asciidoc-pdf` target.
+  - asciidoctor-epub3 : `asciidoctor-epub3` required for the `asciidoc-epub` target.
 
 TARGETS:
-  - adoc-help : show help message.
-  - adoc      : run asciidoctor command with given args.
-  - adoc-html : export adoc as html.
-  - adoc-pdf  : export adoc as pdf.
-  - adoc-epub : export adoc as epub.
+  - <TARGET>-usage : Show the <TARGET> usage.
+  - adoc-help      : Show help message.
+  - adoc           : Run plain asciidoctor command with given args.
+  - adoc-html      : Export *.html from *.adoc.
+  - adoc-pdf       : Export *.pdf from *.adoc.
+  - adoc-epub      : Export  *.epub from *.adoc.
 
 VARIABLES [default value]:
   - ADOC_CMD          : asciidoctor binary path. [asciidoctor]
   - ADOC_CMD_PDF      : asciidoctor-pdf binary path. [asciidoctor-pdf]
   - ADOC_CMD_EPUB     : asciidoctor-epub3 binary path. [asciidoctor-epub3]
   - ADOC_TARGET       : target of asciidoc. [all "docs/adoc/*.adoc" files]
-  - ADOC_OPTION       : asciidoctor command line option. []
-  - ADOC_ATTRS_COMMON : "--attribute" common options. [<Too long. See this adoc.mk>]
+  - ADOC_OPTION       : asciidoctor command line options for all formats. []
+  - ADOC_ATTRS_COMMON : "--attribute" common options. [See the adoc.mk]
   - ADOC_ATTRS_HTML   : "--attribute" for html. [source-highlighter=highlight.js diagram-format=svg]
   - ADOC_ATTRS_PDF    : "--attribute" for pdf. [source-highlighter=rouge mathematical-format=svg diagram-format=svg]
   - ADOC_ATTRS_EPUB   : "--attribute" for epub. [source-highlighter=coderay diagram-format=png]
@@ -97,17 +98,44 @@ ADOC_REQS_EPUB := $(addprefix --require=,$(ADOC_REQS_COMMON) $(ADOC_REQS_EPUB))
 
 #├─────────────────────────────────────────────────────────────────────────────┤
 
+.PHONY: adoc-html-usage
+adoc-html-usage:
+	# Usage : make adoc-html ARGS=""
+	# Exec  : $$(ADOC_CMD) $$(ADOC_OPTION) $$(ADOC_ATTRS_HTML) $$(ADOC_REQS_HTML) $$(ARGS) $$(ADOC_TARGET)
+	# Desc  : Install buf using `go install`.
+	# Examples:
+	#   - make adoc-html
+	#   - make adoc-html ADOC_TARGET="./foo/*.adoc"
+
 .PHONY: adoc-html
 adoc-html:
 	$(ADOC_CMD) $(ADOC_OPTION) $(ADOC_ATTRS_HTML) $(ADOC_REQS_HTML) $(ARGS) $(ADOC_TARGET)
 
 #├─────────────────────────────────────────────────────────────────────────────┤
 
+.PHONY: adoc-pdf-usage
+adoc-pdf-usage:
+	# Usage : make adoc-html ARGS=""
+	# Exec  : $$(ADOC_CMD_PDF) $$(ADOC_OPTION) $$(ADOC_ATTRS_PDF) $$(ADOC_REQS_PDF) $$(ARGS) $$(ADOC_TARGET)
+	# Desc  : Install buf using `go install`.
+	# Examples:
+	#   - make adoc-html
+	#   - make adoc-html ADOC_TARGET="./foo/*.adoc"
+
 .PHONY: adoc-pdf
 adoc-pdf:
 	$(ADOC_CMD_PDF) $(ADOC_OPTION) $(ADOC_ATTRS_PDF) $(ADOC_REQS_PDF) $(ARGS) $(ADOC_TARGET)
 
 #├─────────────────────────────────────────────────────────────────────────────┤
+
+.PHONY: adoc-epub-usage
+adoc-epub-usage:
+	# Usage : make adoc-epub ARGS=""
+	# Exec  : $$(ADOC_CMD_EPUB) $$(ADOC_OPTION) $$(ADOC_ATTRS_EPUB) $$(ADOC_REQS_EPUB) $$(ARGS) $$(ADOC_TARGET)
+	# Desc  : Install buf using `go install`.
+	# Examples:
+	#   - make adoc-epub
+	#   - make adoc-epub ADOC_TARGET="./foo/*.adoc"
 
 .PHONY: adoc-epub
 adoc-epub:

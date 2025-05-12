@@ -1,3 +1,5 @@
+.DEFAULT_GOAL:=help
+
 $(shell mkdir -p bin/)
 export GOBIN := $(CURDIR)/bin/
 
@@ -9,7 +11,6 @@ ifneq (,$(wildcard .env))
 endif
 
 include makefiles/adoc.mk
-include makefiles/buf.mk
 include makefiles/cspell.mk
 include makefiles/drawio.mk
 include makefiles/go-build.mk
@@ -24,20 +25,17 @@ include makefiles/markdownlint.mk
 include makefiles/mermaid.mk
 include makefiles/nfpm.mk
 include makefiles/prettier.mk
-include makefiles/protolint.mk
 include makefiles/scanoss.mk
 include makefiles/shellcheck.mk
 include makefiles/shfmt.mk
 include makefiles/trivy.mk
 include makefiles/util.mk
 
-LOCAL_CHECKS += buf-lint
 LOCAL_CHECKS += cspell-run
 LOCAL_CHECKS += go-licenses-run
 LOCAL_CHECKS += golangci-lint-run
 LOCAL_CHECKS += markdownlint-run
 LOCAL_CHECKS += prettier-run
-LOCAL_CHECKS += protolint-run
 LOCAL_CHECKS += shellcheck-run
 LOCAL_CHECKS += shfmt-run
 
@@ -46,6 +44,5 @@ local-check: $(LOCAL_CHECKS)
 
 .PHONY: local-format
 local-format:
-	$(MAKE) buf-format ARGS="--write"
 	$(MAKE) go-fmt ARGS="-w"
 	$(MAKE) prettier-run ARGS="--write"

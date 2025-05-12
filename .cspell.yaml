@@ -5,6 +5,7 @@ dictionaryDefinitions:
     path: ".project-words.txt"
     addWords: true
 dictionaries:
+  - golang # npm install -g @cspell/dict-golang@latest
   - project-words
 ignorePaths:
   - ".*/"

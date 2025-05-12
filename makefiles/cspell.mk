@@ -55,6 +55,7 @@ CSPELL_OPTION ?= --quiet --words-only --unique
 cspell-install-usage:
 	# Usage : make cspell-install ARGS=""
 	# Exec  : npm install -g "cspell@$$(CSPELL_VERSION)"
+	#         npm install -g "@cspell/dict-golang@latest"
 	# Desc  : Install cspell using `npm -g`.
 	# Examples:
 	#   - make cspell-install
@@ -65,9 +66,11 @@ cspell-install-usage:
 cspell-install:
 ifeq ("cspell-install","$(MAKECMDGOALS)")
 	npm install -g "cspell@$(CSPELL_VERSION)"
+	npm install -g "@cspell/dict-golang@latest"
 else
 ifeq (,$(shell which $(CSPELL_CMD) 2>/dev/null))
 	npm install -g "cspell@$(CSPELL_VERSION)"
+	npm install -g "@cspell/dict-golang@latest"
 endif
 endif
 

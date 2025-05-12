@@ -10,6 +10,7 @@ bin/**
 *.env
 *.test
 *.out
+*.a
 *.o
 *.so
 *.exe
@@ -27,6 +28,11 @@ bin/**
 /docs/adoc/**/*.jpeg
 /docs/adoc/**/*.png
 /docs/adoc/**/*.svg
+
+# Node.js
+node_modules/
+package.json
+package-lock.json
 
 # For convenience
 tmp/
