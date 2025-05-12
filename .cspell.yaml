@@ -7,7 +7,5 @@ dictionaryDefinitions:
 dictionaries:
   - project-words
 ignorePaths:
-  - ".vscode/"
-  - ".git/"
-  - ".project-words.txt"
+  - ".*/"
   - "_output/"
